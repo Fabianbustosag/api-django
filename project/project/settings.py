@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api1',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -75,26 +75,26 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'prueba',
-#         'USER': 'postgres',
-#         'PASSWORD': '12345',
-#         'HOST': 'localhost', #nombre del servicio si uso docker  
-#         'PORT': '5432',  
-#         'OPTIONS': {
-#             'options': '-c search_path=cityprueba',
-#         },        
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': 'localhost', #nombre del servicio si uso docker  
+        'PORT': '5432',  
+        'OPTIONS': {
+            'options': '-c search_path=public',
+        },        
+    }
+}
 
 
 # Password validation
