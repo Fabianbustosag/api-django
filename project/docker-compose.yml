@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   web:
-    # containter_name: django-api
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     # volumes:
@@ -24,8 +23,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
     volumes:
-      - db-data:/var/lib/postgresql/data
-      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../db-data:/var/lib/postgresql/data
     networks:
       - django_net
     ports:
@@ -34,5 +32,5 @@ services:
 networks:
   django_net:
 
-volumes:
-  db-data:
+# volumes:
+#   db-data:

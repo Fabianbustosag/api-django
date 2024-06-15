@@ -1,3 +1,6 @@
 env/
 project/project/__pycache__
-project/api/__pycache__
+project/project/api/__pycache__
+project/project/project/__pycache__
+./db-data
+db-data
