@@ -1,5 +1,10 @@
 # Django API REST
 
+## Cosas que quedan por hacer en la API
+
+- auntenticacion
+- ingreso de datos de prueba
+
 ## Comandos importantes
 
 - `python manage.py migrate`
