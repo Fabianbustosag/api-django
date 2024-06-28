@@ -49,6 +49,7 @@ class AuthUser(models.Model):
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
+    premium = models.IntegerField()
 
     class Meta:
         managed = False
@@ -134,8 +135,9 @@ class Food(models.Model):
     img_src = models.CharField(max_length=200)
     food_amount = models.IntegerField()
     consumed = models.IntegerField()
-    possible_expiration_date = models.IntegerField()
-    food_id = models.IntegerField(primary_key=True)
+    possible_expiration_date = models.DateField()
+    # food_id = models.IntegerField(primary_key=True)
+    food_id = models.AutoField(primary_key=True)
     user = models.ForeignKey('UserData', models.DO_NOTHING)
 
     class Meta:

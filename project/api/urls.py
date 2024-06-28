@@ -1,13 +1,19 @@
 from django.urls import path, include
+
 from . import views
 from rest_framework import routers
-# from .views import CatalogoViewSet
+from rest_framework.documentation import include_docs_urls
+from .views2.view_food import FoodModelView
+# from .views2.view_food import algo
+
 
 router = routers.DefaultRouter()
-# router.register(r'catalogo',views.CatalogoViewSet, 'catalogo') # era el antiguo clase de catalogo
+router.register(r'food',FoodModelView )
 
-urlpatterns = [
-    # path('api/', include(router.urls)),
-    path('api/',views.hello),
-    # path('api/<str:column>/<str:value>',views.CatalogoViewSet.as_view({'get': 'list'})),
+urlpatterns = [    
+    path('api/', include(router.urls)),
+    path('api/', views.hello),
+    path('docs/', include_docs_urls),
+    # path('docs/', algo()),
+
 ]

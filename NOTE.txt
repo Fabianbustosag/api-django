@@ -1,0 +1,44 @@
+activacion ambiente virtual:
+
+C:\Users\fabian\Documents\api-django\env\Scripts\activate
+python C:\Users\fabian\Documents\api-django\project\manage.py runserver
+
+- Food State: se refiere al estado de la comida: 'falta definir el significado de cada estado de comida'
+- Consumed: tambien es un bolean
+
+cambiar     possible_expiration_date = models.DateField()
+
+- hay que cambiar el valor estatico de la categoria de alimentos, de momneto hacerlo en el frontend
+pero deberia hacerce desde backend
+
+intolerance allergies, debe pasar a ser una tabla completa, pero no es prioridad
+
+- prioridad pasar a tener tipos de datos nulos
+
+imagen_scr, como almacenar imagenes
+
+
+- cambiar el user_data al usuario que trae por defecto dajngo
+
+- en flutter falta descargar el visualstudio https://visualstudio.microsoft.com/es/downloads/ la version comunity y dentro falta 
+
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+
+[X] Android toolchain - develop for Android devices
+    X Unable to locate Android SDK.
+      Install Android Studio from: https://developer.android.com/studio/index.html
+      On first launch it will assist you in installing the Android SDK components.
+      (or visit https://flutter.dev/docs/get-started/install/windows#android-setup for detailed instructions).
+      If the Android SDK has been installed to a custom location, please use
+      `flutter config --android-sdk` to update to that location.
+
+
+Habilitar el modo desarrolladores, en una terminar cmd ejecutar:
+  `start ms-settings:developers` y activar el modelulo: para desarrolladores
+
+
+DA IGUAL QUE ID PONGA EN UN POST: SIEMPRE SI ESTA AUTO INCREMENTAL NO LO CONTARA

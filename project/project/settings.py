@@ -37,11 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
+    'coreapi',
     'api',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'project.urls'
 
@@ -76,17 +81,32 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost', #nombre del servicio si uso docker  
+#         'PORT': '8001',  
+#         'OPTIONS': {
+#             'options': '-c search_path=public',
+#         },        
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost', #nombre del servicio si uso docker  
-        'PORT': '8001',  
+        'NAME': 'not_waste_bdd',  # Reemplaza con el nombre de tu base de datos
+        'USER': 'administrador',
+        'PASSWORD': 'notWaste@',
+        'HOST': 'notwastedb.postgres.database.azure.com',
+        'PORT': '5432',  # El puerto por defecto para PostgreSQL
         'OPTIONS': {
             'options': '-c search_path=public',
-        },        
+        }, 
     }
 }
 
