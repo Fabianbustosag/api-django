@@ -200,3 +200,11 @@ class UserData(models.Model):
     class Meta:
         managed = False
         db_table = 'user_data'
+
+
+class Image(models.Model):
+    image_id = models.AutoField(primary_key=True)
+    image = models.ImageField(upload_to='media/', null=True)
+
+    class Meta:
+        db_table = 'image'
