@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Food, Image
+from .models import Food, Image, Publication
 
 
 # el __all__ debe ser quitado por cosas de seguridad y solo poner los metodos necesarios
@@ -13,3 +13,8 @@ class ImageUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
         fields = ['image']
+
+class PublicationSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Publication
+        fields = '__all__'

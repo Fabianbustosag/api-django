@@ -45,3 +45,11 @@ DA IGUAL QUE ID PONGA EN UN POST: SIEMPRE SI ESTA AUTO INCREMENTAL NO LO CONTARA
 
 
 ESTOY IMPOTANDO LA BIBLIOTECA PILLOW, PARA PODER SUBIR UNA IMAGEN
+
+Datos de la API que necesito 
+
+- nombre: x.product.brands
+- tags: x.product.brands_tags[0], x.product.brands_tags[1]
+- categoria: x.product.categories
+- alergias: x.product.allergens_from_user
+- cantidad en gramos: x.product.quantity

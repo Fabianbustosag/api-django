@@ -8,3 +8,5 @@ def hello(request):
     # return HttpResponse(settings.MEDIA_ROOT)
 
 # view para model food
+
+

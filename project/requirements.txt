@@ -5,3 +5,7 @@ psycopg2-binary
 setuptools
 coreapi
 pillow
+requests
+
+pytesseract
+opencv-python
