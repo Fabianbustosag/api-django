@@ -54,29 +54,77 @@ Datos de la API que necesito
 - alergias: x.product.allergens_from_user
 - cantidad en gramos: x.product.quantity
 
+----------------------------------- funciones usadas ------------------------------
 
-System check identified no issues (0 silenced).
-June 29, 2024 - 16:16:14
-Django version 5.0.6, using settings 'project.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.
+def test_eval2(request):
+    path_image = r'C:\\Users\\fabian\\Documents\\api-django\\project\\media\\media\\boleta_2_code.jpg' # ruta donde quedo almacenada la imagen
+    path_image = r'../media/media/boleta_2_code.jpg'
+    path = settings.MEDIA_ROOT + '\\media\\'
+    path = path.replace('\\', '/')
+    # print(f"path_image: {path_image}")
+    # func_to_get_values(path_image=path_image) # se hace que se evalue la imagen / serializer.data 
+    # return HttpResponse(settings.MEDIA_ROOT)
+    return HttpResponse(path) 
 
-texto: 7802225640770
-7802900401016
+def test_eval(request):
+    path_image = r'C:\\Users\\fabian\\Documents\\api-django\\project\\media\\media\\boleta_2_code.jpg' # ruta donde quedo almacenada la imagen
+    path_image = r'../media/media/boleta_2_code.jpg'
+    path = settings.MEDIA_ROOT
+    # print(f"path_image: {path_image}")
+    func_to_get_values(path_image=path_image) # se hace que se evalue la imagen / serializer.data 
+    # return HttpResponse(settings.MEDIA_ROOT)
+    return HttpResponse(path)
+   
 
-7602500238522
+# ruta_archivo = '/media/media/only_code.jpg'
 
---------------------------------------
-code_bar : 7802225640770
-{'food_name': 'bon o bon,Arcor', 'category': 'Botanas,Snacks dulces,Galletas y pasteles,Galletas,Galletas rellenas', 'food_amount_g': '95 g', 'img_src': 'https://images.openfoodfacts.org/images/products/780/222/564/0770/front_es.9.400.jpg'}
---------------------------------------
---------------------------------------
-code_bar : 7802900401016
-An error occurred: 'categories'
---------------------------------------
- no se puede convertir a entero.
---------------------------------------
-code_bar : 7602500238522
-HTTP error occurred: 404 Client Error: Not Found for url: https://world.openfoodfacts.org/api/v3/product/7602500238522.json
---------------------------------------
-[29/Jun/2024 16:16:20] "GET /test/ HTTP/1.1" 200 15
+# # Usando el método rsplit() para dividir la cadena por '/'
+# partes = ruta_archivo.rsplit('/', 1)
+
+# # partes contendrá ['', 'only_code.jpg']
+# # El último elemento de partes es lo que está después de la última barra
+# nombre_archivo = partes[-1]
+
+
+# La diferencia con el otro es que se le debe pasar por parametro el valor de la llave primaria de User_data
+# def create_product_from_dict2(product_data: dict, pk: int):
+#     user = UserData.objects.get(pk=pk)
+#     try:
+#         print('create_product')
+#         print('product: ', product_data)
+#         product = Food.objects.create(
+#             user = user,
+#             food_name = product_data['food_name'], # str
+#             # category = product_data['category'], # str
+#             food_amount_g = limpiar_y_convertir(product_data['food_amount_g']), # Float
+#             img_src = product_data['img_src'] # str
+#         )
+#         return product
+#     except Exception as e:
+#         return f"An error occurred while saving to the database: {e}"
+
+---------------------------------      USADA EN VIEW       -------------------------------
+
+
+
+# view para model food
+def create_model(request):
+    user = UserData.objects.get(pk=1)
+
+    product_data = {
+        'food_name': 'bon o bon,Arcor', 
+        'category': 'Botanas,Snacks dulces,Galletas y pasteles,Galletas,Galletas rellenas', 
+        'food_amount_g': '95 g', 
+        'img_src': 'https://images.openfoodfacts.org/images/products/780/222/564/0770/front_es.9.400.jpg'
+        }
+
+    Food.objects.create(
+            user = user,
+            food_name = product_data['food_name'], # str
+            # category = product_data['category'], # str
+            food_amount_g = clean(product_data['food_amount_g']), # Float
+            img_src = product_data['img_src'] # str
+        )
+    return HttpResponse("Product")
+        
+

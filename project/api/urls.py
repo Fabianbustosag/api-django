@@ -12,8 +12,6 @@ from .views2.view_image import ImageUploadView
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views2.view_image import test_eval, test_eval2
-
 router = routers.DefaultRouter()
 router.register(r'food',FoodModelView)
 router.register(r'publication',PublicationModelView)
@@ -24,10 +22,5 @@ urlpatterns = [
     path('docs/', include_docs_urls),
     # path('upload/', upload_image, name='upload_image'),
     path('upload_2/', ImageUploadView.as_view()),
-    # path('test/', test_eval),
-    path('test/', test_eval2),
-
-
-    path('create/',views.create_model),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
