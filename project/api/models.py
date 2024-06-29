@@ -146,7 +146,7 @@ class DjangoSession(models.Model):
 #         db_table = 'food'
 
 class Food(models.Model):
-    categoty = models.CharField(max_length=60, blank=True, null=True)
+    category = models.CharField(max_length=60, blank=True, null=True)
     elaboration_date = models.DateField(blank=True, null=True)
     expiration_date = models.DateField(blank=True, null=True)
     entry_date = models.DateField(blank=True, null=True)

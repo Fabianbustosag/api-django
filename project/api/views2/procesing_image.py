@@ -1,3 +1,4 @@
+import re
 import cv2
 import requests
 import json
@@ -5,12 +6,23 @@ from pytesseract import *
 
 pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
+# extraigo el texto de la imagen
 def get_text_from_image(image_path: str) -> str: 
     img = cv2.imread(image_path)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     threshold_img = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
     text = pytesseract.image_to_string(threshold_img)
     return text
+
+def get_bar_codes(text: str):
+    lineas = text.splitlines()
+    for linea in lineas:
+        code_bar = linea.strip()  
+        try:
+            code_bar = int(code_bar)
+        except ValueError:
+            print(f"{code_bar} no se puede convertir a entero.")
+    pass
 
 # esta funcion debe retornan un diccionario con los datos requeridos para hacer un nuevo prodcuto
 def get_product_from_api(bar_code: int):
@@ -34,7 +46,16 @@ def get_product_from_api(bar_code: int):
     except Exception as err:
         return f"An error occurred: {err}"
     
-    
+def limpiar_y_convertir(cadena):
+    # Usar una expresión regular para eliminar cualquier cosa que no sea un número o un punto decimal
+    cadena_limpia = re.sub(r'[^\d.]+', '', cadena)
+    # Convertir la cadena resultante a float
+    try:
+        valor_float = float(cadena_limpia)
+        return valor_float
+    except ValueError:
+        return f"Error: no se pudo convertir '{cadena}' a float."
+
 # Data from API, OpenFoodFacts (there re more)
 # - nombre: x.product.brands
 # - tags: x.product.brands_tags[0], x.product.brands_tags[1] (is a list) (lenght is not fixed )
