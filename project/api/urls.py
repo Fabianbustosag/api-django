@@ -13,12 +13,17 @@ from .views2.view_pulication import PublicationModelView
 from .views2.view_image import ImageUploadView
 from django.conf import settings
 from django.conf.urls.static import static
+from .views_folder.userData import *
 
 router = routers.DefaultRouter()
 router.register(r'food',FoodModelView)
 router.register(r'publication',PublicationModelView)
 
 urlpatterns = [    
+    path('userData/getInfo/<int:user_id>/', get_user_data, name='GetUser'),
+    path('userData/postNewUser',post_new_user,name='NewUser'),
+    path('userData/update/<int:user_id>/', update_user_data, name='UpdateUser'),
+    path('userData/delete/<int:user_id>/', delete_user_data, name='DeleteUser'),
     path('login/', view_auth.login),
     path('register/', view_auth.register),
     path('api/', include(router.urls)),

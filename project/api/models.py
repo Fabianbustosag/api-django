@@ -231,6 +231,8 @@ class UserData(models.Model):
     month_budget = models.IntegerField()
     user_id = models.IntegerField(primary_key=True)
     type_count = models.IntegerField()
+    phone = models.CharField(max_length=12)
+    biography = models.CharField(max_length=80)
 
     class Meta:
         managed = False
