@@ -199,17 +199,29 @@ class PossibleShop(models.Model):
         db_table = 'possible_shop'
 
 
+# class Publication(models.Model):
+#     publ_price = models.IntegerField()
+#     publ_descp = models.CharField(max_length=800)
+#     publ_id = models.AutoField(primary_key=True)
+#     user = models.ForeignKey('UserData', models.DO_NOTHING)
+#     food = models.ForeignKey(Food, models.DO_NOTHING)
+
+#     class Meta:
+#         managed = False
+#         db_table = 'publication'
+
 class Publication(models.Model):
-    publ_price = models.IntegerField()
-    publ_descp = models.CharField(max_length=800)
-    publ_id = models.IntegerField(primary_key=True)
+    publ_price = models.IntegerField(blank=True, null=True)
+    publ_descp = models.CharField(max_length=800, blank=True, null=True)
+    publ_id = models.AutoField(primary_key=True)
     user = models.ForeignKey('UserData', models.DO_NOTHING)
     food = models.ForeignKey(Food, models.DO_NOTHING)
+    publ_name = models.CharField(max_length=200, blank=True, null=False)
+    publ_url_img = models.CharField(max_length=600, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'publication'
-
 
 class UserData(models.Model):
     intolerance_allergies = models.CharField(max_length=80)

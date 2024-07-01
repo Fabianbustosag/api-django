@@ -3,6 +3,7 @@ from django.urls import path, include
 # from .views2.view_food import algo
 
 from . import views
+from .views2 import view_auth
 
 from rest_framework import routers
 from rest_framework.documentation import include_docs_urls
@@ -17,6 +18,8 @@ router.register(r'food',FoodModelView)
 router.register(r'publication',PublicationModelView)
 
 urlpatterns = [    
+    path('login/', view_auth.login),
+    path('register/', view_auth.register),
     path('api/', include(router.urls)),
     path('hello/', views.hello),
     path('docs/', include_docs_urls),
