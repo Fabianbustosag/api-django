@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +54,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -79,14 +83,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost', #nombre del servicio si uso docker  
-        'PORT': '8001',  
+        'NAME': 'not_waste_bdd',  # Reemplaza con el nombre de tu base de datos
+        'USER': 'administrador',
+        'PASSWORD': 'notWaste@',
+        'HOST': 'notwastedb.postgres.database.azure.com',
+        'PORT': '5432',  # El puerto por defecto para PostgreSQL
         'OPTIONS': {
             'options': '-c search_path=public',
-        },        
+        }, 
     }
 }
 

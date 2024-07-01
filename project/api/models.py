@@ -123,20 +123,22 @@ class DjangoSession(models.Model):
 
 
 class Food(models.Model):
-    categoty = models.CharField(max_length=60)
-    elaboration_date = models.DateField()
-    expiration_date = models.DateField()
-    entry_date = models.DateField()
-    departure_date = models.DateField()
-    food_state = models.IntegerField()
-    food_name = models.CharField(max_length=60)
-    food_price = models.IntegerField()
+    category = models.CharField(max_length=60, blank=True, null=True)
+    elaboration_date = models.DateField(blank=True, null=True)
+    expiration_date = models.DateField(blank=True, null=True)
+    entry_date = models.DateField(blank=True, null=True)
+    departure_date = models.DateField(blank=True, null=True)
+    food_state = models.IntegerField(blank=True, null=True)
+    food_name = models.CharField(max_length=60, blank=True, null=True)
+    food_price = models.IntegerField(blank=True, null=True)
     img_src = models.CharField(max_length=200)
-    food_amount = models.IntegerField()
-    consumed = models.IntegerField()
-    possible_expiration_date = models.IntegerField()
-    food_id = models.IntegerField(primary_key=True)
+    food_amount = models.IntegerField(blank=True, null=True)
+    consumed = models.IntegerField(blank=True, null=True)
+    possible_expiration_date = models.DateField(blank=True, null=True)
+    food_id = models.AutoField(primary_key=True)
     user = models.ForeignKey('UserData', models.DO_NOTHING)
+    discard_date = models.DateField(blank=True, null=True)
+    food_amount_g = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False
