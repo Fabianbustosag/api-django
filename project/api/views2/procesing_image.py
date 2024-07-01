@@ -4,8 +4,8 @@ import requests
 import json
 from pytesseract import *
 
-pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-
+#pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+pytesseract.tesseract_cmd = r'D:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 # extraigo el texto de la imagen
 def get_text_from_image(image_path: str) -> str: 
     img = cv2.imread(image_path)
