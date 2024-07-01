@@ -123,7 +123,7 @@ class DjangoSession(models.Model):
 
 
 class Food(models.Model):
-    categoty = models.CharField(max_length=60)
+    category = models.CharField(max_length=60)
     elaboration_date = models.DateField()
     expiration_date = models.DateField()
     entry_date = models.DateField()
@@ -134,7 +134,7 @@ class Food(models.Model):
     img_src = models.CharField(max_length=200)
     food_amount = models.IntegerField()
     consumed = models.IntegerField()
-    possible_expiration_date = models.IntegerField()
+    possible_expiration_date = models.DateField()
     food_id = models.IntegerField(primary_key=True)
     user = models.ForeignKey('UserData', models.DO_NOTHING)
 
@@ -194,6 +194,8 @@ class UserData(models.Model):
     month_budget = models.IntegerField()
     user_id = models.IntegerField(primary_key=True)
     type_count = models.IntegerField()
+    phone = models.CharField(max_length=12)
+    biography = models.CharField(max_length=80)
 
     class Meta:
         managed = False
