@@ -27,6 +27,8 @@ def get_bar_codes(text: str):
 # esta funcion debe retornan un diccionario con los datos requeridos para hacer un nuevo prodcuto
 def get_product_from_api(bar_code: int):
     url = f'https://world.openfoodfacts.org/api/v3/product/{bar_code}.json'
+
+    fallback_img_src = 'http://127.0.0.1:8000/media/media/food_generic_2.png'
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -34,7 +36,15 @@ def get_product_from_api(bar_code: int):
         food_name = data['product']['brands'] # Name Product
         category = data['product']['categories'] # categories, pueden ser muchos
         food_amount_g = data['product']['quantity']
-        img_src = data['product']['image_url']
+        print('food amount',food_amount_g)
+        # img_src = data['product']['image_url']
+        img_src = data.get('image_url', fallback_img_src) 
+        print('image src',img_src)
+
+        img_response = requests.head(img_src)
+        if img_response.status_code != 200:
+            img_src = fallback_img_src
+
         return {
             'food_name': food_name,
             'category': category,
