@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'coreapi',
     'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,8 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'project.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
